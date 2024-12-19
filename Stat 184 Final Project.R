@@ -131,3 +131,18 @@ data_clean <- data_clean[-c(382),] #missed one value when removing duplicates
 names(data_clean)[3] <- "Horsepower_(hp)"
 names(data_clean)[5] <- "Torque_(lb-ft)"
 data_clean <- data_clean[-c(4,6)]
+
+#Exploratory Data Analysis
+#Getting counts of how many cars in each company
+ggplot(data_clean) + geom_bar(aes(x = Company)) + theme(axis.text.x = element_text(angle = -90, vjust = 0.5, hjust = 0.5))
+
+#Exploring trend between horsepower and torque
+ggplot(data_clean) + geom_point(aes(x = `Horsepower_(hp)`, y = `Torque_(lb-ft)`)
+                                ) + theme(axis.text.x = element_text(angle = -90, vjust = 0.5, hjust = 1)
+                                          ) + theme(axis.text.y = element_text(angle = 45, vjust = 0.5, hjust = 1)
+                                                     )
+#Exploring trend between horsepower and company sorted by drivetrain
+ggplot(data_clean, aes(x = Company, y = `Horsepower_(hp)`)) + geom_point(aes(color = Drivetrain)
+                                                                         ) + theme(axis.text.x = element_text(angle = -90, vjust = 0.5, hjust = 1))
+
+                                            
